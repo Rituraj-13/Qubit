@@ -15,6 +15,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { ConversationHistory, Project } from "./types";
+import logo from "../../../public/assets/logo.png"
 
 interface DashboardSidebarProps {
     sidebarOpen: boolean;
@@ -123,8 +124,8 @@ export function DashboardSidebar({
             {/* Logo / header */}
             <div className="p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center shadow-sm">
-                        <span className="text-white font-bold text-lg tracking-tighter">Q</span>
+                    <div className="w-8 h-8 bg-slate-900 rounded-xl flex items-center justify-center shadow-sm overflow-hidden">
+                        <img src={logo} alt="logo" className="w-full h-full object-cover" />
                     </div>
                     <span className="font-semibold text-lg tracking-tight">Qubit</span>
                 </div>
@@ -225,8 +226,8 @@ export function DashboardSidebar({
                                     <div
                                         key={project.id}
                                         className={`group flex items-center gap-2.5 px-2.5 py-1.5 text-sm rounded-md transition-all duration-150 cursor-pointer ${isActive
-                                                ? "bg-slate-200/80 text-slate-900 font-medium shadow-sm ring-1 ring-slate-300/60"
-                                                : "text-slate-600 hover:bg-slate-200/50 hover:text-slate-800"
+                                            ? "bg-slate-200/80 text-slate-900 font-medium shadow-sm ring-1 ring-slate-300/60"
+                                            : "text-slate-600 hover:bg-slate-200/50 hover:text-slate-800"
                                             }`}
                                         onClick={() => onSelectProject(project)}
                                     >
@@ -248,11 +249,10 @@ export function DashboardSidebar({
                                             }}
                                             title="Delete project"
                                             aria-label="Delete project"
-                                            className={`shrink-0 h-5 w-5 rounded flex items-center justify-center transition-all duration-150 ${
-                                                isActive
+                                            className={`shrink-0 h-5 w-5 rounded flex items-center justify-center transition-all duration-150 ${isActive
                                                     ? "opacity-0 group-hover:opacity-100 text-slate-500 hover:text-rose-600 hover:bg-rose-50"
                                                     : "opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-600 hover:bg-rose-50"
-                                            }`}
+                                                }`}
                                         >
                                             <Trash2 size={13} />
                                         </button>
@@ -281,8 +281,8 @@ export function DashboardSidebar({
                             key={chat.id}
                             onClick={() => onSelectConversation(chat.id, chat.slug)}
                             className={`group relative flex items-center gap-2 px-3 py-2 text-sm rounded-md cursor-pointer transition-all duration-150 ${isActiveChat
-                                    ? "bg-slate-200/80 font-medium text-slate-900 shadow-sm ring-1 ring-slate-300/60"
-                                    : "text-slate-600 hover:bg-slate-200/50 hover:text-slate-800"
+                                ? "bg-slate-200/80 font-medium text-slate-900 shadow-sm ring-1 ring-slate-300/60"
+                                : "text-slate-600 hover:bg-slate-200/50 hover:text-slate-800"
                                 }`}
                         >
                             {/* Chat icon */}
@@ -308,8 +308,8 @@ export function DashboardSidebar({
                                 title="More actions"
                                 aria-label="More actions"
                                 className={`shrink-0 h-6 w-6 rounded-md flex items-center justify-center transition-all duration-150 ${menuOpenId === chat.id
-                                        ? "opacity-100 bg-slate-300 text-slate-700"
-                                        : "opacity-0 group-hover:opacity-100 text-slate-400 hover:bg-slate-300/60 hover:text-slate-700"
+                                    ? "opacity-100 bg-slate-300 text-slate-700"
+                                    : "opacity-0 group-hover:opacity-100 text-slate-400 hover:bg-slate-300/60 hover:text-slate-700"
                                     }`}
                             >
                                 <Ellipsis size={14} />
@@ -344,8 +344,8 @@ export function DashboardSidebar({
                                                 }
                                             }}
                                             className={`w-full flex items-center justify-between gap-2 px-3 py-2 text-sm transition-colors rounded-t-lg ${moveOpenId === chat.id
-                                                    ? "bg-slate-100 text-slate-900"
-                                                    : "text-slate-700 hover:bg-slate-50"
+                                                ? "bg-slate-100 text-slate-900"
+                                                : "text-slate-700 hover:bg-slate-50"
                                                 }`}
                                         >
                                             <span className="flex items-center gap-2">

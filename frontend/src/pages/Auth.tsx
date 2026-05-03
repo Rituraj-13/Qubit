@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import { createClient } from '@/lib/client'
+import logo from "../../public/assets/logo.png"
 
 const supabase = createClient();
 
@@ -15,8 +16,8 @@ export default function Auth() {
         <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-900 font-sans">
             <div className="w-full max-w-sm p-8 bg-white border border-slate-200 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
                 <div className="flex flex-col items-center justify-center mb-8">
-                    <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center mb-4 shadow-sm">
-                        <span className="text-white font-bold text-2xl tracking-tighter">Q</span>
+                    <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center mb-4 shadow-sm overflow-hidden">
+                        <img src={logo} alt="logo" className="w-full h-full object-cover" />
                     </div>
                     <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Welcome to Qubit</h1>
                     <p className="text-sm text-slate-500 mt-2">Log in to continue to your account</p>
