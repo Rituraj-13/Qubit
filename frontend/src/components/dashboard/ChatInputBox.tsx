@@ -76,7 +76,7 @@ export function ChatInputBox({
                             >
                                 <Globe size={18} />
                             </Button>
-                            <Button
+                            {/* <Button
                                 variant="ghost"
                                 size="icon"
                                 disabled={isLoading}
@@ -84,7 +84,7 @@ export function ChatInputBox({
                                 title="Attach File"
                             >
                                 <Paperclip size={18} />
-                            </Button>
+                            </Button> */}
                         </div>
 
                         <div className="flex items-center gap-2">
