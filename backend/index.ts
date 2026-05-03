@@ -170,6 +170,12 @@ app.get("/conversations/titles", Middleware, async (req, res) => {
     res.json({ conversations: allConversations })
 })
 
+app.get("/", async (req, res) => {
+    res.status(200).json({
+        "message": "Welcome to Qubit API"
+    })
+})
+
 // * Get a particular conversation
 app.get("/conversations/:conversationId", Middleware, async (req, res) => {
     const conversationId = req.params.conversationId;
