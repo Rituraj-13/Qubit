@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+	provider = "prisma-client"
+	output = "./generated"
+	engineType = "client"
+	runtime = "bun"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User{
+  id            String    @id     @default(uuid())
+  email         String    @unique
+  provider      AuthProvider
+  name          String
+  supabaseId    String?
+  conversations Conversation[]
+  projects      Project[]
+}
+
+
+// Every user would have multiple conversations and every conversation will have multiple messages and it can also belongs to a particular project
+model Conversation {
+  id          String    @id @default(uuid())
+  title       String?
+  slug        String
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  messages    Message[]
+  projectId   String?
+  project     Project?  @relation(fields: [projectId], references: [id])
+  public      Boolean   @default(false) // having this for sharing chats
+  sources     Json?
+  sourcesMode String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+
+// every conversation would have multiple messages and every message belongs to a conversation
+model Message {
+  id              String          @id               @default(uuid())
+  content         String
+  role            MessageRole
+  conversationId  String
+  conversation    Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  createdAt       DateTime     @default(now())
+}
+
+// Every projects can have multiple Conversations
+model Project {
+  id            String            @id @default(uuid())
+  project_name  String
+  description   String?
+  userId        String
+  user          User              @relation(fields: [userId], references: [id])
+  conversations Conversation[]
+  createdAt     DateTime       @default(now())
+}
+
+enum MessageRole{
+    User
+    Assistant
+}
+
+enum AuthProvider{
+  Github
+  Google
+}
