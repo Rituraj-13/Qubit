@@ -3,6 +3,7 @@ import index from "./index.html";
 
 const server = serve({
   port: 5173,
+  hostname: "0.0.0.0",
   routes: {
     // Serve index.html for all unmatched routes.
     "/*": index,
