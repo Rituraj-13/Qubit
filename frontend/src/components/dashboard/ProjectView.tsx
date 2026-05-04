@@ -191,7 +191,7 @@ export function ProjectView({
                                 >
                                     <Globe size={18} />
                                 </Button>
-                                <Button
+                                {/* <Button
                                     variant="ghost"
                                     size="icon"
                                     disabled={isLoading}
@@ -199,7 +199,7 @@ export function ProjectView({
                                     title="Attach File"
                                 >
                                     <Paperclip size={18} />
-                                </Button>
+                                </Button> */}
                             </div>
 
                             <div className="flex items-center gap-2">
