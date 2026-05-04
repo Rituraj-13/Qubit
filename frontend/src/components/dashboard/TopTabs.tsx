@@ -95,29 +95,29 @@ export function TopTabs({ activeTab, setActiveTab, onRequestShare, conversationS
             </div>
 
             {open && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
                     <div className="absolute inset-0 bg-black/30" onClick={close} />
-                    <div className="relative bg-white rounded-lg p-6 w-full max-w-lg z-10">
+                    <div className="relative bg-white rounded-lg p-5 sm:p-6 w-full max-w-lg max-h-[85vh] overflow-y-auto z-10">
                         <h3 className="text-sm font-medium mb-2">Share conversation</h3>
                         <p className="text-xs text-slate-500 mb-4">This will create a public, read-only link to view this conversation.</p>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                             <input
                                 readOnly
                                 value={loading ? "Generating link..." : enabled ? shareUrl : ""}
-                                className="flex-1 px-3 py-2 border rounded-lg text-xs bg-slate-50"
+                                className="w-full sm:flex-1 px-3 py-2 border rounded-lg text-xs bg-slate-50"
                             />
                             <button
                                 onClick={copyLink}
                                 disabled={!enabled}
                                 aria-disabled={!enabled}
-                                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 ${enabled ? "bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950" : "bg-slate-200 text-slate-500 cursor-not-allowed"}`}
+                                className={`w-full sm:w-auto px-3 py-2 sm:py-1.5 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 ${enabled ? "bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950" : "bg-slate-200 text-slate-500 cursor-not-allowed"}`}
                             >
                                 Copy Link
                             </button>
                             <button
                                 onClick={close}
-                                className="px-3 py-1.5 rounded-md text-sm font-medium border border-slate-200 text-slate-700 bg-white transition-colors hover:bg-slate-50 hover:text-slate-900 active:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+                                className="w-full sm:w-auto px-3 py-2 sm:py-1.5 rounded-md text-sm font-medium border border-slate-200 text-slate-700 bg-white transition-colors hover:bg-slate-50 hover:text-slate-900 active:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
                             >
                                 Cancel
                             </button>
