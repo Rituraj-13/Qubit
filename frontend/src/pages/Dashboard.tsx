@@ -690,7 +690,7 @@ export default function Dashboard() {
                                 messages={messages}
                                 isLoading={isLoading}
                                 followUpQuestions={followUpQuestions}
-                                onFollowUpClick={(q) => setChatInput(q)}
+                                onFollowUpClick={(q) => { setChatInput(q); handleSendMessage(q); }}
                                 onCopyMessage={handleCopyMessage}
                                 copiedMessageId={copiedMessageId}
                                 messagesEndRef={messagesEndRef}
@@ -707,7 +707,7 @@ export default function Dashboard() {
                                 isLoading={isLoading}
                                 webSearchEnabled={webSearchEnabled}
                                 onToggleWebSearch={() => setWebSearchEnabled(!webSearchEnabled)}
-                                onSendMessage={handleSendMessage}
+                                onSendMessage={() => handleSendMessage()}
                                 selectedModel={selectedModel}
                                 modelOptions={MODEL_OPTIONS}
                                 onModelChange={setSelectedModel}
