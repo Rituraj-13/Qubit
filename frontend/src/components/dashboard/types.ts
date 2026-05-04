@@ -40,7 +40,7 @@ export const MODEL_OPTIONS: readonly ModelOption[] = [
     { label: "Qwen 3.32b", value: "qwen/qwen3-32b" },
     { label: "llama-70b", value: "llama-3.3-70b-versatile" },
     { label: "gpt-oss-120b", value: "openai/gpt-oss-120b" },
-    { label: "Whisper Large v3 Turbo", value: "whisper-large-v3-turbo" },
+    // { label: "Whisper Large v3 Turbo", value: "whisper-large-v3-turbo" },
 ] as const;
 
 export type LlmModel = (typeof MODEL_OPTIONS)[number]["value"];

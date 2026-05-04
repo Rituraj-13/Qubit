@@ -166,7 +166,7 @@ export function ProjectView({
             </div>
 
             {/* Chat input — pinned to bottom, same as main chat page */}
-            <div className="p-4 md:px-0 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white to-transparent pt-10 pointer-events-none">
+            <div className="p-4 md:px-0 absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-white via-white to-transparent pt-10 pointer-events-none">
                 <div className="max-w-3xl mx-auto pointer-events-auto">
                     <div className="bg-slate-50 border border-slate-200 rounded-2xl px-3 py-3 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] focus-within:ring-2 focus-within:ring-slate-200 focus-within:border-slate-300 transition-all flex flex-col gap-2">
                         <Textarea
