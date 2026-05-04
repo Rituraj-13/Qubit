@@ -14,8 +14,10 @@ export function TopTabs({ activeTab, setActiveTab, onRequestShare, conversationS
     const [enabled, setEnabled] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    const isChatStarted = typeof conversationSlug === "string" && conversationSlug.length > 0;
+
     const openShare = async () => {
-        if (!onRequestShare) return;
+        if (!onRequestShare || !isChatStarted) return;
         setOpen(true);
         setLoading(true);
         setError(null);
@@ -36,7 +38,7 @@ export function TopTabs({ activeTab, setActiveTab, onRequestShare, conversationS
         setLoading(false);
     };
 
-    const shareUrl = typeof conversationSlug === "string" && conversationSlug.length > 0
+    const shareUrl = isChatStarted
         ? `${window.location.origin}/share/${conversationSlug}`
         : "";
 
@@ -67,14 +69,14 @@ export function TopTabs({ activeTab, setActiveTab, onRequestShare, conversationS
                     onClick={() => setActiveTab("answer")}
                     className={`flex gap-2 px-4 py-1.5 text-sm font-medium rounded-md ${activeTab === "answer" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
                 >
-                    <Astroid size={20}/>
+                    <Astroid size={20} />
                     Answer
                 </button>
                 <button
                     onClick={() => setActiveTab("sources")}
                     className={`flex gap-2 px-4 py-1.5 text-sm font-medium rounded-md ${activeTab === "sources" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}
                 >
-                    <Layers size={20}/>
+                    <Layers size={20} />
                     Sources
                 </button>
             </div>
@@ -83,7 +85,9 @@ export function TopTabs({ activeTab, setActiveTab, onRequestShare, conversationS
             <div className="flex-shrink-0">
                 <button
                     onClick={openShare}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 whitespace-nowrap"
+                    disabled={!isChatStarted}
+                    aria-disabled={!isChatStarted}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium border whitespace-nowrap ${isChatStarted ? "bg-white border-slate-200 text-slate-700 hover:bg-slate-50" : "bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed"}`}
                 >
                     <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" /><polyline points="16 6 12 2 8 6" /><line x1="12" y1="2" x2="12" y2="15" /></svg>
                     <span className="hidden sm:inline">Share</span>
