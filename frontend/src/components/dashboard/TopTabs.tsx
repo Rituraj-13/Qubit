@@ -107,8 +107,20 @@ export function TopTabs({ activeTab, setActiveTab, onRequestShare, conversationS
                                 value={loading ? "Generating link..." : enabled ? shareUrl : ""}
                                 className="flex-1 px-3 py-2 border rounded-lg text-xs bg-slate-50"
                             />
-                            <button onClick={copyLink} disabled={!enabled} className="px-3 py-1.5 rounded-md bg-slate-900 text-white text-sm" aria-disabled={!enabled}>Copy Link</button>
-                            <button onClick={close} className="px-3 py-1.5 rounded-md text-sm">Close</button>
+                            <button
+                                onClick={copyLink}
+                                disabled={!enabled}
+                                aria-disabled={!enabled}
+                                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 ${enabled ? "bg-slate-900 text-white hover:bg-slate-800 active:bg-slate-950" : "bg-slate-200 text-slate-500 cursor-not-allowed"}`}
+                            >
+                                Copy Link
+                            </button>
+                            <button
+                                onClick={close}
+                                className="px-3 py-1.5 rounded-md text-sm font-medium border border-slate-200 text-slate-700 bg-white transition-colors hover:bg-slate-50 hover:text-slate-900 active:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+                            >
+                                Cancel
+                            </button>
                         </div>
 
                         {error && <p className="text-xs text-red-600 mt-3">{error}</p>}
