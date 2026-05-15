@@ -1,4 +1,4 @@
-# 🧠 Qubit
+# 🧠 Qubit Chat
 
 Qubit is an AI-powered conversational search engine application. It answers user queries using a powerful mixture of large language models for reasoning and live web search for gathering the latest information. 
 
